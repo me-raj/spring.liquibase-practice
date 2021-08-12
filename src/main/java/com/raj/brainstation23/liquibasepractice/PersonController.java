@@ -18,17 +18,14 @@ public class PersonController {
                                @RequestParam String food){
 
         personRepository.save(new PersonEntity(name,food));
+        return personRepository.findByName(name) + " Saved!";
 
-//        return personRepository.findByNameIs(name) + " Saved!";
-        return "saved!";
     }
 
 
     @GetMapping("/get")
     public List<PersonEntity> getAlll (){
-        return (List<PersonEntity>)
-                personRepository.
-                        findAll();
+        return (List<PersonEntity>) personRepository.findAll();
     }
 
 
