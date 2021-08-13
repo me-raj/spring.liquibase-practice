@@ -15,18 +15,18 @@ public class PersonController {
 
     @PostMapping("/save")
     public String createPerson(@RequestParam String name,
-                               @RequestParam String food){
+                               @RequestParam String food,
+                               @RequestParam String address) {
 
-        personRepository.save(new PersonEntity(name,food));
+        personRepository.save(new PersonEntity(name, food, address));
         return personRepository.findByName(name) + " Saved!";
 
     }
 
 
     @GetMapping("/get")
-    public List<PersonEntity> getAlll (){
+    public List<PersonEntity> getAlll() {
         return (List<PersonEntity>) personRepository.findAll();
     }
-
 
 }

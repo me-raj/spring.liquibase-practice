@@ -6,8 +6,37 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-<!--    <include file="db/changelog/changelog-v1.xml"/>-->
-    <include file="db/changelog/changelog-v2.xml"/>
+    <changeSet id="4" author="db-ninja">
+        <insert tableName="practice">
+            <column name="id" type="int" autoIncrement="true"></column>
+        </insert>
+    </changeSet>
 
+    <changeSet id="2" author="db_tester">
+        <addColumn schemaName="liquibase-practice"
+                   tableName="person">
+            <column name="address" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="4" author="Mahfuz">
+        <addColumn tableName="practice" schemaName="liquibase-practice">
+            <column name="age" type="varchar(255)"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="RollBackMaster">
+        <rollback>
+            <dropTable tableName="practice"></dropTable>
+        </rollback>
+    </changeSet>
+
+    <!--    <changeSet id="5" author="dbNinja">-->
+    <!--        <dropColumn tableName="practice"></dropColumn>-->
+    <!--    </changeSet>-->
+
+    <!--    <changeSet id="" author="">-->
+    <!--        <-->
+    <!--    </changeSet>-->
 
 </databaseChangeLog>
